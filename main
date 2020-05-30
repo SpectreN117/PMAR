@@ -1,0 +1,14 @@
+import math
+
+# The diameter of the projectile in meters
+D = 0.07
+# Constants based on the medium the projectile is travelling through (Air at sea level, 20C°)
+B = 0.00016
+C = 0.25
+# Constants based on the size and shape of the projectile (Spherical Object of diameter D)
+b = B*D
+c = C*D
+
+def f(V):
+    return (b*V) + (c*(V^2))
+
