@@ -7,17 +7,25 @@ C = 0.4 #Drag coefficient
 D = (p*A*C)/2 #Value of constant D in kg/m
 
 ti = 0.5 #Length of time interval in seconds 
-t = 0 #Initial time in seconds
-tmax = 10 #Time at which the simulation will stop
+t = 0 #Initial time for drag simulation in seconds
+t2 = 0 #Initial time for no drag simulation in seconds
+tmax = 20 #Time at which the simulation will stop
 
-x = 0 #Initial x value
-y = 0 #Initial y value
+x = 0 #Initial x value w/ drag
+x2 = 0 #Initial x value w/o drag
+y = 0 #Initial y value w/ drag
+y2 = 0 #Initial y value w/o drag
 
 v = 50 #Initial velocity
-vy = 42.5451762267 #Initial y component of velocity
-vx = 26.2660994409 #Initial x component of velocity
+vy = 35.3553390593 #Initial y component of velocity w/ drag
+vy2 = 35.3553390593 #Initial y component of velocity w/o drag
+vx = 35.3553390593 #Initial x component of velocity w/ drag
+vx2 = 35.3553390593 #Initial x component of velocity w/o drag
 
-while t < tmax:
+ax2 = 0 #x component of acceleration w/o drag
+ay2 = -g #y component of acceleration w/o drag
+
+while t < tmax: #Simulates baseball w/ drag
     ax = -(D/m)*(v)*(vx)
     ay = (-g)-(D/m)*(v)*(vy)
     print("x:{x} y:{y}".format(x=x,y=y))
@@ -28,3 +36,14 @@ while t < tmax:
     x = x + (vx)*(ti) + (0.5)*(ax)*(ti*ti)
     y = y + (vy)*(ti) + (0.5)*(ay)*(ti*ti)
     t = t + ti
+
+print() #Separates drag and no drag outputs
+    
+while t2 < tmax: #Simulates baseball w/0 drag
+    print("x2:{x2} y2:{y2}".format(x2=x2,y2=y2))
+    #print("vx:{vx2} vy:{vy2}".format(vx2=vx2,vy2=vy2))
+    vx2 = vx2 + (ax2)*(ti)
+    vy2 = vy2 + (ay2)*(ti)
+    x2 = x2 + (vx2)*(ti) + (0.5)*(ax2)*(ti*ti)
+    y2 = y2 + (vy2)*(ti) + (0.5)*(ay2)*(ti*ti)
+    t2 = t2 + ti
