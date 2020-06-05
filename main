@@ -4,7 +4,7 @@ m = 0.145 #Mass of projectile in Kg
 p = 1.225 #Density of air in kg/m^3
 A = 0.00426 #Silhouette area of projectile in m^2
 C = 0.4 #Drag coefficient
-D = (pAC)/2 #Value of constant D in kg/m
+D = (p*A*C)/2 #Value of constant D in kg/m
 
 ti = 0.5 #Length of time interval in seconds 
 t = 0 #Initial time in seconds
@@ -19,4 +19,11 @@ vx = 26.2660994409 #Initial x component of velocity
 
 while t < tmax:
     ax = -(D/m)(v)(vx)
-    ay = -g
+    ay = -g -(D/m)(v)(vy)
+    output = "x:{0} y:{1} vx:{3} vy:{4} ax:{5} ay:{6}"
+    print(output.format(x,y,vx,vy,ax,ay))
+    vx = vx + (ax)(ti)
+    vy = vy + (ay)(ti)
+    x = x + (vx)(ti) + (0.5)(ax)(ti^2)
+    y = y + (vy)(ti) + (0.5)(ay)(ti^2)
+    t = t + ti
