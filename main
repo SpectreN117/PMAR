@@ -8,7 +8,7 @@ D = (p*A*C)/2 #Value of constant D in kg/m
 
 ti = 0.5 #Length of time interval in seconds 
 t = 0 #Initial time in seconds
-tmax = 20 #Time at which the simulation will stop
+tmax = 10 #Time at which the simulation will stop
 
 x = 0 #Initial x value
 y = 0 #Initial y value
@@ -18,12 +18,13 @@ vy = 42.5451762267 #Initial y component of velocity
 vx = 26.2660994409 #Initial x component of velocity
 
 while t < tmax:
-    ax = -(D/m)(v)(vx)
-    ay = -g -(D/m)(v)(vy)
-    output = "x:{0} y:{1} vx:{3} vy:{4} ax:{5} ay:{6}"
-    print(output.format(x,y,vx,vy,ax,ay))
-    vx = vx + (ax)(ti)
-    vy = vy + (ay)(ti)
-    x = x + (vx)(ti) + (0.5)(ax)(ti^2)
-    y = y + (vy)(ti) + (0.5)(ay)(ti^2)
+    ax = -(D/m)*(v)*(vx)
+    ay = (-g)-(D/m)*(v)*(vy)
+    print("x:{x} y:{y}".format(x=x,y=y))
+    #print("vx:{vx} vy:{vy}".format(vx=vx,vy=vy))
+    #print(ax:{ax} ay:{ay}".format(ax=ax,ay=ay))
+    vx = vx + (ax)*(ti)
+    vy = vy + (ay)*(ti)
+    x = x + (vx)*(ti) + (0.5)*(ax)*(ti*ti)
+    y = y + (vy)*(ti) + (0.5)*(ay)*(ti*ti)
     t = t + ti
