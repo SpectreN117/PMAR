@@ -1,14 +1,22 @@
-import math
+g = 9.80665 #Standard (average) acceleration due to gravity in m/s^2
 
-# The diameter of the projectile in meters
-D = 0.07
-# Constants based on the medium the projectile is travelling through (Air at sea level, 20C°)
-B = 0.00016
-C = 0.25
-# Constants based on the size and shape of the projectile (Spherical Object of diameter D)
-b = B*D
-c = C*D
+m = 0.145 #Mass of projectile in Kg
+p = 1.225 #Density of air in kg/m^3
+A = 0.00426 #Silhouette area of projectile in m^2
+C = 0.4 #Drag coefficient
+D = (pAC)/2 #Value of constant D in kg/m
 
-def f(V):
-    return (b*V) + (c*(V^2))
+ti = 0.5 #Length of time interval in seconds 
+t = 0 #Initial time in seconds
+tmax = 20 #Time at which the simulation will stop
 
+x = 0 #Initial x value
+y = 0 #Initial y value
+
+v = 50 #Initial velocity
+vy = 42.5451762267 #Initial y component of velocity
+vx = 26.2660994409 #Initial x component of velocity
+
+while t < tmax:
+    ax = -(D/m)(v)(vx)
+    ay = -g
